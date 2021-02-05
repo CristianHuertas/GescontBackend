@@ -3,7 +3,7 @@ from db.cliente_db import ClienteInDB
 from db.users_db import UserInDB
 
 from models.cliente_model import Cliente
-from models.users_model import Cliente
+from models.users_model import Users
 
 from datetime import date
 from typing import  Dict
