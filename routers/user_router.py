@@ -18,7 +18,7 @@ async def auth_user(users: Users, sesion: Session = Depends(obtener_sesion)):
     if user_in_db == None:
         raise HTTPException(status_code=404, detail="El usuario no existe")
 
-    if user_in_db.password != sesion.password:
+    if user_in_db.password != users.password:
         raise HTTPException(status_code=403, detail="Contraseña Incorrecta")
 
     return  {"Autenticado": True}
