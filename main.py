@@ -10,6 +10,8 @@ from typing import  Dict
 from fastapi import FastAPI, HTTPException
 
 from routers.clientes_router       import router as router_clientes
+from routers.user_router       import router as router_users
+
 
 
 
@@ -27,6 +29,8 @@ allow_credentials=True, allow_methods=["*"], allow_headers=["*"],
 
 # Incluimos nuestros dos endpoints en api 
 api.include_router(router_clientes)
+api.include_router(router_users)
+
 
 """ @api.post("/cliente/registroSave")
 async def save_cliente(cliente: Cliente):
