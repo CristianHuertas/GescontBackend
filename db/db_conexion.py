@@ -35,4 +35,4 @@ Base = declarative_base()
 
 # TODO: Reemplazar el nombre del esquema creado 
 # en la base de datos
-Base.metadata.schema = "gestionatec"
+Base.metadata.schema = "gescont"
