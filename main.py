@@ -1,6 +1,10 @@
 """ from db import cliente_db """
 from db.cliente_db import ClienteInDB
+from db.cliente_db import UserInDB
+
 from models.cliente_model import Cliente
+from models.users_model import Cliente
+
 from datetime import date
 from typing import  Dict
 from fastapi import FastAPI, HTTPException

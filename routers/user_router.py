@@ -27,6 +27,11 @@ async def auth_user(users: Users, sesion: Session = Depends(obtener_sesion)):
 
     return  {"Autenticado": True}
 
+
+@router.get("/")
+async def root():
+    return {"message":"GesCont"}    
+
 """ @router.get("/user/balance/{username}", response_model=UserOut)
 async def get_balance(username: str, db: Session = Depends(get_db)):
 
