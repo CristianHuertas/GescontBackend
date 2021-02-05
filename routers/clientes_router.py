@@ -27,7 +27,7 @@ async def get_cliente (id_cliente: int, sesion: Session = Depends(obtener_sesion
 
 #revisar por que no lo veo claro
 @router.get("/cliente/registroGet/{id_cliente}") #consultar un solo cliente por id_cliente cuando viene de la url
-async def get_cliente(id_cliente:int, sesion: Session = Depends(id_cliente)):
+async def get_cliente(id_cliente:int, sesion: Session = Depends(obtener_sesion)):
     este_cliente= sesion.query(ClienteInDB).get(id_cliente)
     if este_cliente==None:
         raise HTTPException(status_code=404, detail=" El cliente no existe ")
