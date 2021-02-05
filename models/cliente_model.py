@@ -1,12 +1,12 @@
 from pydantic import BaseModel
 
 class Cliente(BaseModel):
+    
+    id_cliente: int
     documento: int
-    tipo_documento: str
     razon_social: str
     contacto: str
-    telefono: int
-    direccion: str
+    telefono: str
     ciudad: str
     correo: str
     detalle: str

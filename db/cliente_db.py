@@ -9,12 +9,11 @@ from db.db_conexion import Base, engine
 class ClienteInDB(Base):
     __tablename__ = "clientes"
 
-    documento= Column(Integer, primary_key=True)
-    tipo_documento= Column(String)
+    id_cliente= Column(Integer, primary_key=True)
+    documento= Column(Integer)
     razon_social= Column(String)
     contacto= Column(String)
-    telefono= Column(Integer)
-    direccion= Column(String)
+    telefono= Column(String)
     ciudad= Column(String)
     correo= Column(String)
     detalle= Column(String)

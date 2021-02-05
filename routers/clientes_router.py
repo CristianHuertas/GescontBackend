@@ -16,9 +16,9 @@ async def get_clientes(sesion: Session = Depends(obtener_sesion)):
 
     
 
-@router.get("/cliente/registroGet") #consultar un solo cliente por documento
-async def get_cliente (documento: int, sesion: Session = Depends(obtener_sesion)):
-    este_cliente= sesion.query(ClienteInDB).get(documento)
+@router.get("/cliente/registroGet") #consultar un solo cliente por id_cliente
+async def get_cliente (id_cliente: int, sesion: Session = Depends(obtener_sesion)):
+    este_cliente= sesion.query(ClienteInDB).get(id_cliente)
 
     if este_cliente==None:
         raise HTTPException(status_code=404, detail=" El cliente no existe ")
@@ -26,9 +26,9 @@ async def get_cliente (documento: int, sesion: Session = Depends(obtener_sesion)
     return este_cliente 
 
 #revisar por que no lo veo claro
-@router.get("/cliente/registroGet/{documento}") #consultar un solo cliente por documento cuando viene de la url
-async def get_cliente(documento:int, sesion: Session = Depends(obtener_sesion)):
-    este_cliente= sesion.query(ClienteInDB).get(documento)
+@router.get("/cliente/registroGet/{id_cliente}") #consultar un solo cliente por id_cliente cuando viene de la url
+async def get_cliente(id_cliente:int, sesion: Session = Depends(id_cliente)):
+    este_cliente= sesion.query(ClienteInDB).get(id_cliente)
     if este_cliente==None:
         raise HTTPException(status_code=404, detail=" El cliente no existe ")
     return este_cliente    
@@ -41,18 +41,17 @@ async def root():
 """ ///////////////////////////// """
 @router.put("/cliente/registroPut") #cambiar datos de un cliente
 async def update_cliente(cliente: Cliente, sesion: Session = Depends(obtener_sesion)):
-    cliente_in_db=sesion.query(ClienteInDB).get(cliente.documento)
+    cliente_in_db=sesion.query(ClienteInDB).get(cliente.id_cliente)
 
     if cliente_in_db == None:
         raise HTTPException(status_code=404,
                             detail=" El cliente no existe ")
     
+    cliente_in_db.id_cliente= cliente.id_cliente
     cliente_in_db.documento= cliente.documento
-    cliente_in_db.tipo_documento= cliente.tipo_documento
     cliente_in_db.razon_social= cliente.razon_social
     cliente_in_db.contacto= cliente.contacto
     cliente_in_db.telefono= cliente.telefono
-    cliente_in_db.direccion= cliente.direccion
     cliente_in_db.ciudad= cliente.ciudad
     cliente_in_db.correo= cliente.correo
     cliente_in_db.detalle= cliente.detalle
@@ -67,7 +66,7 @@ async def update_cliente(cliente: Cliente, sesion: Session = Depends(obtener_ses
 
 @router.post("/cliente/registroSave")#crear un nuevo cliente
 async def save_cliente(cliente: Cliente, sesion: Session = Depends(obtener_sesion)):
-    busca_cliente= sesion.query(ClienteInDB).get(cliente.documento)
+    busca_cliente= sesion.query(ClienteInDB).get(cliente.id_cliente)
     if busca_cliente != None:
         raise HTTPException(status_code=404,
                             detail=" El cliente ya existe ")
@@ -79,9 +78,9 @@ async def save_cliente(cliente: Cliente, sesion: Session = Depends(obtener_sesio
     return cliente_nuevo 
 
 
-@router.delete("/cliente/registroDel/{documento}") # Elimina un cliente por documento
-def delete_cliente(documento:int, sesion: Session = Depends(obtener_sesion)):
-    cliente_eliminado= sesion.query(ClienteInDB).get(documento)
+@router.delete("/cliente/registroDel/{id_cliente}") # Elimina un cliente por id_cliente
+def delete_cliente(id_cliente:int, sesion: Session = Depends(obtener_sesion)):
+    cliente_eliminado= sesion.query(ClienteInDB).get(id_cliente)
 
     if cliente_eliminado==None:
         raise HTTPException(status_code=404, detail=" El cliente no existe ")
@@ -90,5 +89,5 @@ def delete_cliente(documento:int, sesion: Session = Depends(obtener_sesion)):
     sesion.commit()
     
 
-    return documento
+    return id_cliente
 
