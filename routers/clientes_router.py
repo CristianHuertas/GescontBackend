@@ -3,6 +3,7 @@ from typing import  Dict
 from fastapi import Depends, APIRouter, HTTPException
 from sqlalchemy.orm import Session
 from db.db_conexion import obtener_sesion
+
 from db import cliente_db
 from db.cliente_db import ClienteInDB
 from models.cliente_model import Cliente

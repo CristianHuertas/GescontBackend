@@ -1,11 +1,11 @@
 from typing import List
+from typing import  Dict
 from fastapi import Depends, APIRouter, HTTPException
 from sqlalchemy.orm import Session
-
 from db.db_conexion import obtener_sesion
-from db.users_db import UserInDB
-from db import users_db
 
+from db import users_db
+from db.users_db import UserInDB
 from models.users_model import Users
 
 """ from db.db_connection import get_db
