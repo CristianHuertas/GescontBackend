@@ -11,6 +11,8 @@ from fastapi import FastAPI, HTTPException
 
 from routers.clientes_router       import router as router_clientes
 from routers.user_router       import router as router_users
+from routers.gestiones_router       import router as router_gestiones
+
 
 
 
@@ -30,6 +32,8 @@ allow_credentials=True, allow_methods=["*"], allow_headers=["*"],
 # Incluimos nuestros dos endpoints en api 
 api.include_router(router_clientes)
 api.include_router(router_users)
+api.include_router(router_gestiones)
+
 
 
 """ @api.post("/cliente/registroSave")
