@@ -10,7 +10,26 @@ from models.users_model import Users
 
 router = APIRouter()
 
-@router.post("/user/auth")
+
+
+
+
+
+@router.get("/user/auth") #bucar  un usuario
+async def get_users(username: str, sesion: Session = Depends(obtener_sesion)):
+    usuario_indb= sesion.query(UserInDB).get(username)
+    return usuario_indb 
+
+
+@router.get("/user/auth/{username}") #bucar  un usuario
+async def get_users(username: str, sesion: Session = Depends(obtener_sesion)):
+    usuario_indb= sesion.query(UserInDB).get(username)
+    return usuario_indb 
+
+
+
+
+""" @router.post("/user/auth/")
 async def auth_user(users: Users, sesion: Session = Depends(obtener_sesion)):
 
     user_in_db = sesion.query(UserInDB).get(users.username)
@@ -21,7 +40,7 @@ async def auth_user(users: Users, sesion: Session = Depends(obtener_sesion)):
     if user_in_db.password != users.password:
         raise HTTPException(status_code=403, detail="Contraseña Incorrecta")
 
-    return  {"Autenticado": True}
+    return  {"Autenticado": True} """
 
 
 
