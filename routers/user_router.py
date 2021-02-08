@@ -12,8 +12,8 @@ router = APIRouter()
 
 
 
-@router.get("/user/auth") #bucar  un usuario
-async def get_user(users: Users, sesion: Session = Depends(obtener_sesion)):
+@router.post("/user/auth") #bucar  un usuario
+async def get_put(users: Users, sesion: Session = Depends(obtener_sesion)):
     usuario_indb= sesion.query(UserInDB).get(users.username)
 
     if usuario_indb == None:
