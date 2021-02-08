@@ -2,9 +2,10 @@ from pydantic import BaseModel
 import datetime
 
 
-class GestionInDB(BaseModel):
+class Gestion(BaseModel):
     
     id_gestion: int
+    id_cliente: int
     fecha_gestion: datetime
     gestor: str
     tipificacion: str

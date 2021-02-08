@@ -14,7 +14,7 @@ router = APIRouter()
 
 @router.post("/gestion/registroSave")#crear una nueva gestion
 async def save_gestion(gestion: Gestion, sesion: Session = Depends(obtener_sesion)):
-   
+    
     gestion_nueva = GestionInDB(**gestion.dict())   
     sesion.add(gestion_nueva)
     sesion.commit()

@@ -12,9 +12,10 @@ import datetime
 
 
 class GestionInDB(Base):
-    __tablename__ = Cliente.id_cliente
+    __tablename__ = "gestiones"
 
     id_gestion= Column(Integer, primary_key=True, autoincrement=True)
+    id_cliente= Column(Integer, ForeignKey("clientes.id_cliente"))
     fecha_gestion= Column(DateTime, default=datetime.datetime.utcnow)
     gestor= Column(String)
     tipificacion= Column(String)
