@@ -18,19 +18,26 @@ router = APIRouter()
 @router.get("/user/auth") #bucar  un usuario
 async def get_users(username: str, sesion: Session = Depends(obtener_sesion)):
     usuario_indb= sesion.query(UserInDB).get(username)
-    return usuario_indb 
+
+    if usuario_indb == None:
+        raise HTTPException(status_code=404, detail="El usuario no existe")
+
+    if usuario_indb.password != usuario_indb.password:
+        raise HTTPException(status_code=403, detail="Contraseña Incorrecta")
+
+    return  usuario_indb
 
 
-@router.get("/user/auth/{username}") #bucar  un usuario
+""" @router.get("/user/auth/{username}") #bucar  un usuario
 async def get_users(username: str, sesion: Session = Depends(obtener_sesion)):
     usuario_indb= sesion.query(UserInDB).get(username)
     if usuario_indb == None:
         raise HTTPException(status_code=404, detail="El usuario no existe")
 
-    """ if user_in_db.password != users.password:
-        raise HTTPException(status_code=403, detail="Contraseña Incorrecta") """
+    if usuario_indb.password != usuario_indb.password:
+        raise HTTPException(status_code=403, detail="Contraseña Incorrecta")
 
-    return  usuario_indb
+    return  usuario_indb """
 
 
 
