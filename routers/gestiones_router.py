@@ -22,6 +22,14 @@ async def save_gestion(gestion: Gestion, sesion: Session = Depends(obtener_sesio
 
     return gestion_nueva 
 
+
+
+@router.get("/gestion/registroGetAll") #mostrar todos los clientes
+async def get_clientes(sesion: Session = Depends(obtener_sesion)):
+    todas_gestiones= sesion.query(GestionInDB).all()
+    return todas_gestiones   
+    
+
 """ 
 @router.put("/user/transaction/", response_model=TransactionOut)
 async def make_transaction(transaction_in: TransactionIn, session: Session = Depends(get_db)):
