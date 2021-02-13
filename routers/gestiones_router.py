@@ -6,7 +6,7 @@ from db.db_conexion import obtener_sesion
 
 from db import gestion_db
 from db.gestion_db import GestionInDB
-from models.gestion_model import Gestion
+from models.gestion_model import GestionOut, GestionIn
 
 
 router = APIRouter()
@@ -14,8 +14,10 @@ router = APIRouter()
 
 @router.post("/gestion/registroSave")#crear una nueva gestion
 async def save_gestion(gestion: Gestion, sesion: Session = Depends(obtener_sesion)):
-    
     gestion_nueva = GestionInDB(**gestion.dict())   
+    
+     
+    
     sesion.add(gestion_nueva)
     sesion.commit()
     sesion.refresh(gestion_nueva)

@@ -3,7 +3,14 @@ from datetime import datetime
 
 
 
-class Gestion(BaseModel):
+class GestionIn(BaseModel):
+    
+    id_cliente: int
+    gestor: str
+    tipificacion: str
+    resumen_gestion: str
+
+class GestionOut(BaseModel):
     
     id_gestion: int
     id_cliente: int
@@ -11,7 +18,6 @@ class Gestion(BaseModel):
     gestor: str
     tipificacion: str
     resumen_gestion: str
-
-
+    
     class Config:
         orm_mode = True
