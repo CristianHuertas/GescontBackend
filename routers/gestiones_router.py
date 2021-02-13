@@ -13,7 +13,7 @@ router = APIRouter()
 
 
 @router.post("/gestion/registroSave")#crear una nueva gestion
-async def save_gestion(gestion: Gestion, sesion: Session = Depends(obtener_sesion)):
+async def save_gestion(gestion: GestionIn, sesion: Session = Depends(obtener_sesion)):
     gestion_nueva = GestionInDB(**gestion.dict())   
     
      
