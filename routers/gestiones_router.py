@@ -12,7 +12,7 @@ from models.gestion_model import GestionOut, GestionIn
 router = APIRouter()
 
 
-@router.post("/gestion/registroSave")#crear una nueva gestion
+@router.put("/gestion/registroSave", response_model=GestionOut)#crear una nueva gestion
 async def save_gestion(gestion: GestionIn, sesion: Session = Depends(obtener_sesion)):
     gestion_nueva = GestionInDB(**gestion.dict())   
     
