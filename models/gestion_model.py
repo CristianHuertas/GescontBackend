@@ -9,6 +9,8 @@ class GestionIn(BaseModel):
     gestor: str
     tipificacion: str
     resumen_gestion: str
+    class Config:
+        orm_mode = True
 
 class GestionOut(BaseModel):
     
@@ -18,6 +20,6 @@ class GestionOut(BaseModel):
     gestor: str
     tipificacion: str
     resumen_gestion: str
-    
+
     class Config:
         orm_mode = True
