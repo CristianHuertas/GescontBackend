@@ -15,8 +15,8 @@ class GestionInDB(Base):
     __tablename__ = "gestiones"
 
     id_gestion= Column(Integer, primary_key=True, autoincrement=True)
-    id_cliente= Column(Integer, ForeignKey("clientes.id_cliente"))
-    fecha_gestion= Column(DateTime, default=datetime.datetime.utcnow)
+    id_cliente= Column(Integer)
+    fecha_gestion= Column(String)
     gestor= Column(String)
     tipificacion= Column(String)
     resumen_gestion= Column(String)
