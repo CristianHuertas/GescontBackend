@@ -27,10 +27,7 @@ async def save_gestion(gestion: GestionIn, sesion: Session = Depends(obtener_ses
 
 @router.post("/gestion/registroSave")#crear un nuevo cliente
 async def save_gestion(gestion: Gestion, sesion: Session = Depends(obtener_sesion)):
-    busca_cliente= sesion.query(GestionInDB).get(gestion.id_cliente)
-    if busca_cliente == None:
-        raise HTTPException(status_code=404,
-                            detail=" El cliente no tiene gestiones ")
+
     gestion_nuevo = GestionInDB(**gestion.dict())   
     sesion.add(gestion_nuevo)
     sesion.commit()
