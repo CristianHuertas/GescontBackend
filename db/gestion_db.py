@@ -2,7 +2,7 @@
 from pydantic import BaseModel """
 
 
-from sqlalchemy import Column, ForeignKey, Integer, String, DateTime
+from sqlalchemy import Column, ForeignKey, Integer, String, DateTime, Date
 from db.db_conexion import Base, engine
 from models.cliente_model import Cliente
 from db.cliente_db import ClienteInDB
@@ -16,7 +16,7 @@ class GestionInDB(Base):
 
     id_gestion= Column(Integer, primary_key=True, autoincrement=True)
     id_cliente= Column(Integer)
-    fecha_gestion= Column(DateTime, default=datetime.datetime.utcoffset(self=-5))
+    fecha_gestion= Column(Date, default=datetime.date)
     gestor= Column(String)
     tipificacion= Column(String)
     resumen_gestion= Column(String)
