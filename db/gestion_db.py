@@ -7,7 +7,7 @@ from db.db_conexion import Base, engine
 from models.cliente_model import Cliente
 from db.cliente_db import ClienteInDB
 
-import datetime,
+import datetime
 
 
 
