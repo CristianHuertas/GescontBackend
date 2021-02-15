@@ -28,14 +28,6 @@ async def save_gestion(gestion: GestionIn, sesion: Session = Depends(obtener_ses
     return gestion_nuevo     
 
 
-""" @router.get("/gestion/registroGetAll") #mostrar todos los clientes
-async def get_gestiones(id_cliente: int,sesion: Session = Depends(obtener_sesion)):
-    todas_gestiones= sesion.query(GestionInDB).order_by(desc(GestionInDB.id_gestion)).filter_by(id_cliente=id_cliente).all()
-    #todas_gestiones= sesion.query(GestionInDB).order_by(desc(GestionInDB.id_gestion))
-
-
-    return todas_gestiones   """
-
 @router.get("/gestion/registroGetAll/{id_cliente}") #mostrar las gestiones de un cliente ordenados por id_gestion
 async def get_gestiones(id_cliente: int,sesion: Session = Depends(obtener_sesion)):
     todas_gestiones= sesion.query(GestionInDB).order_by(desc(GestionInDB.id_gestion)).filter_by(id_cliente=id_cliente).all()
