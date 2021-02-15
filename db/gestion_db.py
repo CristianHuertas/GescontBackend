@@ -7,7 +7,7 @@ from db.db_conexion import Base, engine
 from models.cliente_model import Cliente
 from db.cliente_db import ClienteInDB
 
-import datetime, dataclasses, datetime._time
+import datetime
 
 
 
@@ -16,7 +16,7 @@ class GestionInDB(Base):
 
     id_gestion= Column(Integer, primary_key=True, autoincrement=True)
     id_cliente= Column(Integer)
-    fecha_gestion= Column(DateTime, default=datetime.datetime.utcnow)
+    fecha_gestion= Column(DateTime, default=datetime.now())
     gestor= Column(String)
     tipificacion= Column(String)
     resumen_gestion= Column(String)
