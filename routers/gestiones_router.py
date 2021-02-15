@@ -40,7 +40,7 @@ async def get_clientes(id_gestion: int,sesion: Session = Depends(obtener_sesion)
 async def get_clientes(sesion: Session = Depends(obtener_sesion)):
     #todos_clientes= sesion.query(GestionInDB).order_by(GestionInDB.id_gestion.desc())
     #someselect.order_by(desc(table1.mycol))
-    todos_clientes= sesion.order_by(desc(GestionInDB.id_gestion))
+    todos_clientes= sesion.query.order_by(sesion.id_gestion).all()
 
     #session.query(SpreadsheetCells).order_by(SpreadsheetCells.y_index)
     
