@@ -34,13 +34,17 @@ async def get_clientes(id_gestion: int,sesion: Session = Depends(obtener_sesion)
     #todas_gestiones= sesion.query(GestionInDB).order_by(desc(GestionInDB.id_gestion))
 
 
-    return todas_gestiones.order_by(GestionInDB.id_gestion)   
+    return todas_gestiones   
     
 @router.get("/gestion/registrosOrdenados") #mostrar todos los clientes
 async def get_clientes(sesion: Session = Depends(obtener_sesion)):
     #todos_clientes= sesion.query(GestionInDB).order_by(GestionInDB.id_gestion.desc())
     #someselect.order_by(desc(table1.mycol))
-    todos_clientes= sesion.query.order_by(GestionInDB.id_gestion).all()
+    #todos_clientes= sesion.query(ClienteInDB).all()    
+    todos_clientes= sesion.query(GestionInDB).order_by(GestionInDB.id_gestion).all()
+    
+
+
 
     #session.query(SpreadsheetCells).order_by(SpreadsheetCells.y_index)
     
