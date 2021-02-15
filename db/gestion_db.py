@@ -16,7 +16,7 @@ class GestionInDB(Base):
 
     id_gestion= Column(Integer, primary_key=True, autoincrement=True)
     id_cliente= Column(Integer)
-    fecha_gestion= Column(DateTime, default=datetime.datetime.utc-5)
+    fecha_gestion= Column(DateTime, default=datetime.datetime.now)
     gestor= Column(String)
     tipificacion= Column(String)
     resumen_gestion= Column(String)
